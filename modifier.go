@@ -25,8 +25,8 @@ func getClassNameFromName(name string) string {
 
 func NewModifier(name string, description string) Modifier {
 	return Modifier{
-		Name: name,
+		Name:        name,
 		Description: description,
-		ClassName: getClassNameFromName(name),
+		ClassName:   getClassNameFromName(name),
 	}
 }

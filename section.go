@@ -40,7 +40,7 @@ func NewSection(comment string, filename string) Section {
 				modifiers = append(modifiers, NewModifier(modifier, description))
 			}
 		} else if strings.HasPrefix(line, referenceStart) {
-			reference = strings.TrimRight(referenceRegexp.FindString(line), ".")
+			reference = strings.TrimRight(referenceRegexp.FindStringSubmatch(line)[1], ".")
 		} else {
 			descriptionLines = append(descriptionLines, line)
 		}
