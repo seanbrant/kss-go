@@ -115,7 +115,7 @@ func CommentParser(name string) []string {
 			}
 		}
 
-		// Prase multi-line style
+		// Parse multi-line style
 		if isMultiLineCommentStart(line) || insideMultiLineBlock {
 			parsed := parseMultiLine(line)
 
