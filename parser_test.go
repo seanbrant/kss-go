@@ -6,11 +6,15 @@ import (
 )
 
 func TestParser(t *testing.T) {
+	notFound := Parser("fixtures/not-found")
 	scss := Parser("fixtures/scss")
 	less := Parser("fixtures/less")
 	sass := Parser("fixtures/sass")
 	css := Parser("fixtures/css")
 	multiple := Parser("fixtures/scss", "fixtures/less")
+
+	// handles missing directories
+	assert.Equal(t, len(notFound), 0)
 
 	// parses kss comments in scss
 	assert.Equal(t, scss["2.1.1"].Description, "Your standard form button.")
