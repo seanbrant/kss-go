@@ -1,6 +1,7 @@
 package kss
 
 import (
+	"path/filepath"
 	"regexp"
 	"strings"
 )
@@ -14,12 +15,13 @@ var referenceRegexp, _ = regexp.Compile(`Styleguide ([\d\.]+)`)
 var optionalRegexp, _ = regexp.Compile(`\[(.*)\]\?`)
 
 type Section struct {
+	Filename    string
 	Reference   string
 	Description string
 	Modifiers   []Modifier
 }
 
-func NewSection(comment string, filename string) Section {
+func NewSection(comment string, path string) Section {
 	var reference string
 	var description string
 
@@ -49,6 +51,7 @@ func NewSection(comment string, filename string) Section {
 	description = strings.TrimSpace(strings.Join(descriptionLines, "\n"))
 
 	return Section{
+		Filename:    filepath.Base(path),
 		Reference:   reference,
 		Description: description,
 		Modifiers:   modifiers,
