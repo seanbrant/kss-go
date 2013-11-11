@@ -3,6 +3,7 @@ package kss
 import (
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 func Parser(paths ...string) map[string]Section {
@@ -23,8 +24,8 @@ func Parser(paths ...string) map[string]Section {
 
 				for i := range comments {
 					comment := comments[i]
-
-					section := NewSection(comment, p)
+					filename := strings.TrimLeft(strings.Replace(p, path, "", 1), "/")
+					section := NewSection(comment, filename)
 					sections[section.Reference] = section
 				}
 			}

@@ -1,7 +1,6 @@
 package kss
 
 import (
-	"path/filepath"
 	"regexp"
 	"strings"
 )
@@ -21,7 +20,7 @@ type Section struct {
 	Modifiers   []Modifier
 }
 
-func NewSection(comment string, path string) Section {
+func NewSection(comment string, filename string) Section {
 	var reference string
 	var description string
 
@@ -51,7 +50,7 @@ func NewSection(comment string, path string) Section {
 	description = strings.TrimSpace(strings.Join(descriptionLines, "\n"))
 
 	return Section{
-		Filename:    filepath.Base(path),
+		Filename:    filename,
 		Reference:   reference,
 		Description: description,
 		Modifiers:   modifiers,
