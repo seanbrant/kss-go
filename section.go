@@ -17,14 +17,14 @@ type Section struct {
 	Filename    string
 	Reference   string
 	Description string
-	Modifiers   []Modifier
+	Modifiers   []*Modifier
 }
 
-func NewSection(comment string, filename string) Section {
+func NewSection(comment string, filename string) *Section {
 	var reference string
 	var description string
 
-	modifiers := []Modifier{}
+	modifiers := []*Modifier{}
 	descriptionLines := []string{}
 
 	lines := strings.Split(comment, "\n")
@@ -49,7 +49,7 @@ func NewSection(comment string, filename string) Section {
 
 	description = strings.TrimSpace(strings.Join(descriptionLines, "\n"))
 
-	return Section{
+	return &Section{
 		Filename:    filename,
 		Reference:   reference,
 		Description: description,

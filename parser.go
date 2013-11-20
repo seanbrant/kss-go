@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-func Parser(paths ...string) map[string]Section {
-	sections := map[string]Section{}
+func Parser(paths ...string) map[string]*Section {
+	sections := map[string]*Section{}
 
 	for i := range paths {
 		path := paths[i]
