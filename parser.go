@@ -26,7 +26,10 @@ func Parser(paths ...string) map[string]*Section {
 					comment := comments[i]
 					filename := strings.TrimLeft(strings.Replace(p, path, "", 1), "/")
 					section := NewSection(comment, filename)
-					sections[section.Reference] = section
+
+					if len(section.Reference) > 0 {
+						sections[section.Reference] = section
+					}
 				}
 			}
 
