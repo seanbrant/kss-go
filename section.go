@@ -10,7 +10,7 @@ var pseudoClassModifier = ":"
 var modifierDescriptionSeparator = " - "
 var referenceStart = "Styleguide"
 
-var referenceRegexp, _ = regexp.Compile(`Styleguide ([\d\.]+)`)
+var referenceRegexp, _ = regexp.Compile(`Styleguide ([\w\.]+)`)
 var optionalRegexp, _ = regexp.Compile(`\[(.*)\]\?`)
 
 type Section struct {

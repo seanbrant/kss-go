@@ -1,6 +1,7 @@
 package kss
 
 import (
+	"github.com/stretchr/testify/assert"
 	"strings"
 	"testing"
 )
@@ -19,5 +20,15 @@ Your standard form button.
 Styleguide 2.1.1.
     `)
 
-	NewSection(comment, "example.css")
+	section := NewSection(comment, "example.css")
+	assert.Equal(t, section.Reference, "2.1.1")
+}
+
+func TestSectionWithStringReference(t *testing.T) {
+	comment := strings.TrimSpace(`
+Styleguide Buttons.1.1.
+    `)
+
+	section := NewSection(comment, "example.css")
+	assert.Equal(t, section.Reference, "Buttons.1.1")
 }
